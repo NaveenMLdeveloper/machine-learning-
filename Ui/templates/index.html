@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .form-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .form-section div {
+            width: 30%;
+            padding: 10px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Breast Cancer Prediction</h1>
+        <form action="/predict" method="post">
+            <div class="form-section">
+                <div>
+                    <input type="number" name="radius_mean" placeholder="Radius Mean" step="any" required>
+                    <input type="number" name="texture_mean" placeholder="Texture Mean" step="any" required>
+                    <input type="number" name="perimeter_mean" placeholder="Perimeter Mean" step="any" required>
+                    <input type="number" name="area_mean" placeholder="Area Mean" step="any" required>
+                    <input type="number" name="smoothness_mean" placeholder="Smoothness Mean" step="any" required>
+                    <input type="number" name="compactness_mean" placeholder="Compactness Mean" step="any" required>
+                    <input type="number" name="concavity_mean" placeholder="Concavity Mean" step="any" required>
+                    <input type="number" name="concave_points_mean" placeholder="Concave Points Mean" step="any" required>
+                    <input type="number" name="symmetry_mean" placeholder="Symmetry Mean" step="any" required>
+                    <input type="number" name="fractal_dimension_mean" placeholder="Fractal Dimension Mean" step="any" required>
+                </div>
+                <div>
+                    <input type="number" name="radius_se" placeholder="Radius SE" step="any" required>
+                    <input type="number" name="texture_se" placeholder="Texture SE" step="any" required>
+                    <input type="number" name="perimeter_se" placeholder="Perimeter SE" step="any" required>
+                    <input type="number" name="area_se" placeholder="Area SE" step="any" required>
+                    <input type="number" name="smoothness_se" placeholder="Smoothness SE" step="any" required>
+                    <input type="number" name="compactness_se" placeholder="Compactness SE" step="any" required>
+                    <input type="number" name="concavity_se" placeholder="Concavity SE" step="any" required>
+                    <input type="number" name="concave_points_se" placeholder="Concave Points SE" step="any" required>
+                    <input type="number" name="symmetry_se" placeholder="Symmetry SE" step="any" required>
+                    <input type="number" name="fractal_dimension_se" placeholder="Fractal Dimension SE" step="any" required>
+                </div>
+                <div>
+                    <input type="number" name="radius_worst" placeholder="Radius Worst" step="any" required>
+                    <input type="number" name="texture_worst" placeholder="Texture Worst" step="any" required>
+                    <input type="number" name="perimeter_worst" placeholder="Perimeter Worst" step="any" required>
+                    <input type="number" name="area_worst" placeholder="Area Worst" step="any" required>
+                    <input type="number" name="smoothness_worst" placeholder="Smoothness Worst" step="any" required>
+                    <input type="number" name="compactness_worst" placeholder="Compactness Worst" step="any" required>
+                    <input type="number" name="concavity_worst" placeholder="Concavity Worst" step="any" required>
+                    <input type="number" name="concave_points_worst" placeholder="Concave Points Worst" step="any" required>
+                    <input type="number" name="symmetry_worst" placeholder="Symmetry Worst" step="any" required>
+                    <input type="number" name="fractal_dimension_worst" placeholder="Fractal Dimension Worst" step="any" required>
+                </div>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
